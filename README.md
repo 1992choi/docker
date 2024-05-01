@@ -44,6 +44,17 @@
 
 <br><hr><br>
 
-## 환경 구축
-### 제목
-- 내용
+## 실습
+### 컨테이너 실행
+- Client, Server의 버전 및 상태 확인
+  - docker version
+- 플러그인, 시스템 상세 정보 확인
+  - docker info
+- 도움말
+  - docker --help
+- 컨테이너 실행
+  - docker run (실행옵션) 이미지명
+  - Ex) docker run -p 80:80 --name hellonginx nginx
+- 컨테이너 삭제
+  - docker rm 컨테이너명/ID
+  - Ex) docker rm hellonginx
