@@ -46,6 +46,8 @@
     - 컨테이너를 생성하기 위한 파일 시스템과 실행할 애플리케이션의 소스 코드, 라이브러리, 환경 설정 등의 모든 것을 포함하는 템플릿이다.
   - 컨테이너
     - 이미지를 기반으로 생성되며, 파일 시스템과 어플리케이션이 구체화되어 실행되는 상태이다.
+- 컨테이너의 라이프사이클
+  - ![image](https://github.com/Young-Geun/Docker/assets/27760576/bc38eeee-0b0b-4411-835e-0ed54802e9b6)
 
 <br><hr><br>
 
@@ -58,16 +60,25 @@
 - 도움말
   - docker --help
 - 컨테이너 실행
-  - docker run (실행옵션) 이미지명
+  - docker run [실행옵션] [이미지명]
   - Ex) docker run -p 80:80 --name hellonginx nginx
 - 컨테이너 삭제
-  - docker rm 컨테이너명/ID
+  - docker rm [컨테이너명/ID]
   - Ex) docker rm hellonginx
 - 실행중인 컨테이너 리스트 조회
   - docker ps
+- 실행중인 컨테이너의 로그 조회
+  - docker logs [컨테이너명]
 ### 이미지
 - 이미지 조회
   - docker image ls
 - 특정 이미지 조회
-  - docker image ls 이미지명
+  - docker image ls [이미지명]
   - Ex) docker image ls nginx
+### 이미지의 메타데이터
+- 이미지의 세부 정보 조회
+  - docker image inspect [이미지명]
+- 컨테이너의 세부 정보 조회
+  - docker container inspect [컨테이너명]
+- 컨테이너 실행 시 메타데이터의 env 덮어쓰기
+  - docker run --env KEY=VALUE [이미지명]
