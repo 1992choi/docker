@@ -41,6 +41,11 @@
     - Docker 이미지를 도커 컨테이너로 만들고 실행하게 해주는 데몬
     - Docker daemon과 통신하거나 Docker API 요청을 기다리고 이미지, 컨테이너, 네트워크, 볼륨 등을 관리하는 역할
     - REST API를 통해 Docker Client와 통신
+- 이미지와 컨테이너
+  - 이미지
+    - 컨테이너를 생성하기 위한 파일 시스템과 실행할 애플리케이션의 소스 코드, 라이브러리, 환경 설정 등의 모든 것을 포함하는 템플릿이다.
+  - 컨테이너
+    - 이미지를 기반으로 생성되며, 파일 시스템과 어플리케이션이 구체화되어 실행되는 상태이다.
 
 <br><hr><br>
 
@@ -58,3 +63,11 @@
 - 컨테이너 삭제
   - docker rm 컨테이너명/ID
   - Ex) docker rm hellonginx
+- 실행중인 컨테이너 리스트 조회
+  - docker ps
+### 이미지
+- 이미지 조회
+  - docker image ls
+- 특정 이미지 조회
+  - docker image ls 이미지명
+  - Ex) docker image ls nginx
