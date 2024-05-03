@@ -77,7 +77,12 @@
     - 도커 컨테이너 내부에서 발생한 변경 사항을 새로운 이미지로 저장하는 기능이다.
     - 이렇게 저장된 이미지는 도커 이미지 레지스트리에 업로드하여 공유하거나 다른 도커 호스트에서 실행할 수 있다.
   - 이미지 빌드
-    - 내용
+    - 커밋 방식의 문제점
+      - 이미지를 만들 때마다 컨테이너 실행을 위해 매번 명령어를 수행해야한다.
+      - 커밋 하나당 이미지의 레이어가 1개가 추가되므로, 여러 개의 이미지 레이어 추가를 위해서는 여러 번의 커밋이 수행되어야한다.
+      - 복잡한 절차로 인해서 실수가 나올 수 있다. (휴먼에러)
+    - 이미지를 만드는 단계를 기재한 명세서인 'Dockerfile'을 통해 이미지를 생성하는 방법이다.
+    - 원하는 이미지 상태를 코드로 작성하면, 도커는 이를 읽어들여 컨테이너를 이미지를 생성한다.
 
 <br><hr><br>
 
@@ -136,3 +141,9 @@
 - 실행 중인 컨테이너를 이미지로 생성
   - docker commit -m [커밋명] [실행중인 컨테이너명] [생성할 이미지명]
   - Ex) docker commit -m "edited index.html" -c 'CMD ["nginx","-g","daemon off;"]' officialNginx 1992choi/commitnginx
+### 이미지 빌드
+- 도커파일을 통해 이미지 빌드
+  - docker build -t [이미지명] [Dockerfile경로]
+  - Ex) docker build -t 1992choi/buildnginx .
+- Dockerfile 지시어
+  - ![image](https://github.com/Young-Geun/Docker/assets/27760576/d931b008-83ab-4fef-bb76-441ab525f9a7)
