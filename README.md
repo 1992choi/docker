@@ -71,6 +71,13 @@
       - 중복 데이터를 최소화할 수 있다.
       - 빌드 속도를 높일 수 있다.
       - 저장소를 효율적으로 사용할 수 있게 해준다.
+- 도커 이미지 생성
+  - 도커 이미지를 생성하는 방법에는 이미지 커밋과 이미지 빌드가 있다.
+  - 이미지 커밋
+    - 도커 컨테이너 내부에서 발생한 변경 사항을 새로운 이미지로 저장하는 기능이다.
+    - 이렇게 저장된 이미지는 도커 이미지 레지스트리에 업로드하여 공유하거나 다른 도커 호스트에서 실행할 수 있다.
+  - 이미지 빌드
+    - 내용
 
 <br><hr><br>
 
@@ -121,3 +128,11 @@
 - 이미지의 레이어 이력 조회
   - docker image history [이미지명]
   - Ex) docker image history devwikirepo/hello-nginx
+### 이미지 커밋
+- 컨테이너 실행과 동시에 터미널 접속
+  - docker run -it --name [컨테이너명] [이미지명] bin/bash
+  - Ex) docker run -it --name officialNginx nginx bin/bash
+  - 이미지 내부의 파일 시스템을 확인하거나 디버깅 용도로 많이 사용되는 방법
+- 실행 중인 컨테이너를 이미지로 생성
+  - docker commit -m [커밋명] [실행중인 컨테이너명] [생성할 이미지명]
+  - Ex) docker commit -m "edited index.html" -c 'CMD ["nginx","-g","daemon off;"]' officialNginx 1992choi/commitnginx
