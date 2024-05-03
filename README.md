@@ -59,6 +59,18 @@
   - 이미지명 규칙
     - 레지스트리 주소/프로젝트명/이미지명:이미지태그
     - Ex) docker.io/library/nginx:latest
+- 이미지 레이어
+  - 도입배경
+    - 도커 이미지는 컨테이너를 생성하기 위한 모든 정보를 갖고 있기 때문에 보통 수백MB ~ 수GB가 넘는다. 그런데 기존 이미지에서 작은 변경사항이 생겨 도커 파일에 코드 한줄을 추가해 다시 이미지를 만들고 그 이미지를 다운로드 받는다고 가정하면, 겨우 코드 한줄 추가했는데 이미지의 불변성 때문에 수백MB ~ 수GB가 되는 이미지를 다시 다운로드 받는 매우 비효율적인 상황이 된다. 이러한 문제를 해결하기 위하여 레이어라는 개념이 도입되었다.
+  - 레이어란?
+    - 기존 이미지에 추가적인 파일이 필요할 때, 다시 다운로드 받는 방법이 아닌 해당 파일을 추가하기 위한 개념이다.
+    - ![image](https://github.com/Young-Geun/Docker/assets/27760576/7f085c8d-cda8-456b-900b-dd17f8f01543)
+      - Docker 이미지는 위 그림처럼 여러 레이어로 구성되며, 각 레이어는 이전 레이어의 변경 사항을 가지고 있다.
+      - 만약 ubuntu 이미지가 기존에 존재하는데, nginx 이미지를 다운 받을 경우 nginx 레이어만 다운받게 된다.
+    - 장점
+      - 중복 데이터를 최소화할 수 있다.
+      - 빌드 속도를 높일 수 있다.
+      - 저장소를 효율적으로 사용할 수 있게 해준다.
 
 <br><hr><br>
 
@@ -97,11 +109,15 @@
   - docker run --env KEY=VALUE [이미지명]
 ### 이미지 레지스트리
 - 로컬 스토리지로 이미지 다운로드
-  - docker pull 이미지명
+  - docker pull [이미지명]
   - Ex) docker pull devwikirepo/simple-web:1.0
 - 로컬스토리지의 이미지명 추가
-  - docker tag 기존이미지명 추가할이미지명
+  - docker tag [기존 이미지명] [추가할 이미지명]
   - Ex) docker tag devwikirepo/simple-web:1.0 1992choi/my-simple-web:0.1
 - 이미지 레지스트리에 이미지 업로드
-  - docker push 이미지명
+  - docker push [이미지명]
   - Ex) docker push 1992choi/my-simple-web:0.1
+### 이미지 레이어
+- 이미지의 레이어 이력 조회
+  - docker image history [이미지명]
+  - Ex) docker image history devwikirepo/hello-nginx
