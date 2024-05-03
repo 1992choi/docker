@@ -48,6 +48,17 @@
     - 이미지를 기반으로 생성되며, 파일 시스템과 어플리케이션이 구체화되어 실행되는 상태이다.
 - 컨테이너의 라이프사이클
   - ![image](https://github.com/Young-Geun/Docker/assets/27760576/bc38eeee-0b0b-4411-835e-0ed54802e9b6)
+- 이미지 레지스트리
+  - 이미지 레지스트리란?
+    - 도커 이미지를 관리하는 일종의 저장소이다.
+  - 제공 기능
+    - 이미지를 업로드 / 다운로드
+    - 이미지를 검색하는 기능
+    - 이미지 버전 관리
+    - 파이프라인
+  - 이미지명 규칙
+    - 레지스트리 주소/프로젝트명/이미지명:이미지태그
+    - Ex) docker.io/library/nginx:latest
 
 <br><hr><br>
 
@@ -75,6 +86,8 @@
 - 특정 이미지 조회
   - docker image ls [이미지명]
   - Ex) docker image ls nginx
+- 이미지 삭제
+  - docker image rm [이미지명]
 ### 이미지의 메타데이터
 - 이미지의 세부 정보 조회
   - docker image inspect [이미지명]
@@ -82,3 +95,13 @@
   - docker container inspect [컨테이너명]
 - 컨테이너 실행 시 메타데이터의 env 덮어쓰기
   - docker run --env KEY=VALUE [이미지명]
+### 이미지 레지스트리
+- 로컬 스토리지로 이미지 다운로드
+  - docker pull 이미지명
+  - Ex) docker pull devwikirepo/simple-web:1.0
+- 로컬스토리지의 이미지명 추가
+  - docker tag 기존이미지명 추가할이미지명
+  - Ex) docker tag devwikirepo/simple-web:1.0 1992choi/my-simple-web:0.1
+- 이미지 레지스트리에 이미지 업로드
+  - docker push 이미지명
+  - Ex) docker push 1992choi/my-simple-web:0.1
