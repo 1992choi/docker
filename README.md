@@ -83,6 +83,62 @@
   - 이미지를 만드는 단계를 기재한 명세서인 'Dockerfile'을 통해 이미지를 생성하는 방법이다.
   - 원하는 이미지 상태를 코드로 작성하면, 도커는 이를 읽어들여 컨테이너를 이미지를 생성한다.
   - 커밋 방식의 문제점 때문에 빌드방식을 더 많이 사용한다.
+### Dockerfile 지시어
+- ![image](https://github.com/Young-Geun/Docker/assets/27760576/d931b008-83ab-4fef-bb76-441ab525f9a7)
+### 멀티 스테이지 빌드
+- Multi-Stage Build(멀티 스테이지 빌드)란?
+  - 단일 도커 파일에서 여러 단계의 빌드를 수행하는 방법이다.
+- 사용목적
+  - 빌드 도구와 런타임 환경을 분리하고 실행에 필요한 최소한의 구성만 포함하여 이미지 크기를 최소화할 수 있다.
+  - 빌드 도구와 관련된 정보들을 외부에 노출시키지 않아 보안을 강화할 수 있다.
+  - 중복된 작업을 피하고 이전 단계의 캐시를 활용하기 때문에 빌드 속도가 향상된다.
+- 사용예시
+  - 단일 스테이지 빌드
+    - 실행단계에 불필요한 소스코드 및 빌드단계의 정보가 포함되어 있다.
+    - ```
+      # 빌드 환경 설정
+      FROM maven:3.6-jdk-11 
+      WORKDIR /app
+      
+      # pom.xml과 src/ 디렉토리 복사
+      COPY pom.xml .
+      COPY src ./src
+      
+      # 애플리케이션 빌드
+      RUN mvn clean package
+      
+      # 빌드된 JAR 파일을 실행 환경으로 복사
+      RUN cp /app/target/*.jar ./app.jar
+      
+      # 애플리케이션 실행
+      EXPOSE 8080
+      CMD ["java", "-jar", "app.jar"]
+      ```
+  - 멀티 스테이지 빌드
+    - 실행단계에 필요한 정보만 포함되어 있다.
+    - ```
+      # 첫번째 단계: 빌드 환경 설정
+      FROM maven:3.6 AS build
+      WORKDIR /app
+      
+      # pom.xml과 src/ 디렉토리 복사
+      COPY pom.xml .
+      COPY src ./src
+      
+      # 애플리케이션 빌드
+      RUN mvn clean package
+      
+      # 두번째 단계: 실행 환경 설정
+      FROM openjdk:11-jre-slim
+      WORKDIR /app
+      
+      # 빌드 단계에서 생성된 JAR 파일 복사
+      COPY --from=build /app/target/*.jar ./app.jar
+      
+      # 애플리케이션 실행
+      EXPOSE 8080
+      CMD ["java", "-jar", "app.jar"]
+      ```
 
 <br><hr><br>
 
@@ -145,5 +201,6 @@
 - 도커파일을 통해 이미지 빌드
   - docker build -t [이미지명] [Dockerfile경로]
   - Ex) docker build -t 1992choi/buildnginx .
-- Dockerfile 지시어
-  - ![image](https://github.com/Young-Geun/Docker/assets/27760576/d931b008-83ab-4fef-bb76-441ab525f9a7)
+- 도커파일명이 Dockerfile이 아닌 경우
+  - docker build -f [도커파일명] -t [이미지명] [Dockerfile경로]
+  - Ex) docker build -f Dockerfile-basic -t buildapp:basic .
