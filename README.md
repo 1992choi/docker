@@ -204,7 +204,7 @@
 - 도커파일명이 Dockerfile이 아닌 경우
   - docker build -f [도커파일명] -t [이미지명] [Dockerfile경로]
   - Ex) docker build -f Dockerfile-basic -t buildapp:basic .
-### 어플리케이션 구성
+### 애플리케이션 구성
 - 네트워크 생성
   - docker network create leafy-network
 - DB 구성 및 확인
@@ -218,3 +218,25 @@
   - docker logs -f leafy-front
 - 접속정보
   - john123@qmail.com / password123
+### 애플리케이션 구성 (직접 구성)
+- leafy 디렉토리 기반으로 구성
+- 네트워크 생성
+  - docker network create leafy-network
+- DB 구성 및 확인
+  - leafy/leafy-postgresql 디렉토리에서 수행
+  - docker build -t 1992choi/leafy-postgres:1.0.0 .
+  - docker push 1992choi/leafy-postgres:1.0.0
+  - docker run -d --name leafy-postgres --network leafy-network 1992choi/leafy-postgres:1.0.0
+  - docker logs -f leafy-postgres
+- Backend 구성 및 확인
+  - leafy/leafy-postgresql 디렉토리에서 수행
+  - docker build -t 1992choi/leafy-backend:1.0.0 .
+  - docker push 1992choi/leafy-backend:1.0.0
+  - docker run -d -p 8080:8080 -e DB_URL=leafy-postgres --network leafy-network --name leafy 1992choi/leafy-backend:1.0.0
+  - docker logs -f leafy
+  - curl http://localhost:8080/api/v1/users
+- Frontend 구성 및 확인
+  - leafy/leafy-frontend 디렉토리에서 수행
+  - docker build -t 1992choi/leafy-frontend:1.0.0 .
+  - docker push 1992choi/leafy-frontend:1.0.0
+  - docker run -d -p 80:80 --network leafy-network --name leafy-front 1992choi/leafy-frontend:1.0.0
