@@ -240,3 +240,17 @@
   - docker build -t 1992choi/leafy-frontend:1.0.0 .
   - docker push 1992choi/leafy-frontend:1.0.0
   - docker run -d -p 80:80 --network leafy-network --name leafy-front 1992choi/leafy-frontend:1.0.0
+### 네트워크
+- 네트워크 리스트 조회
+  - docker network ls
+- 네트워크 상세 정보 조회
+  - docker network inspect [네트워크명]
+  - Ex) docker network inspect leafy-network
+- 네트워크 생성
+  - docker network create [네트워크명]
+  - Ex) docker network create new-network
+- 네트워크 삭제
+  - docker network rm [네트워크명]
+  - Ex) docker network rm new-network
+- 포트 포워딩
+  - docker run -p [Host OS의 포트]:[컨테이너의 포트]
