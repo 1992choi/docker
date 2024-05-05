@@ -204,3 +204,17 @@
 - 도커파일명이 Dockerfile이 아닌 경우
   - docker build -f [도커파일명] -t [이미지명] [Dockerfile경로]
   - Ex) docker build -f Dockerfile-basic -t buildapp:basic .
+### 어플리케이션 구성
+- 네트워크 생성
+  - docker network create leafy-network
+- DB 구성 및 확인
+  - docker run -d --name leafy-postgres --network leafy-network devwikirepo/leafy-postgres:1.0.0
+  - docker logs -f leafy-postgres
+- Backend 구성 및 확인
+  - docker run -d -p 8080:8080 -e DB_URL=leafy-postgres --network leafy-network --name leafy devwikirepo/leafy-backend:1.0.0
+  - docker logs -f leafy
+- Frontend 구성 및 확인
+  - docker run -d -p 80:80 --network leafy-network --name leafy-front devwikirepo/leafy-frontend:1.0.0
+  - docker logs -f leafy-front
+- 접속정보
+  - john123@qmail.com / password123
