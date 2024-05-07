@@ -206,6 +206,13 @@
     - Memory 초과
       - OOM 발생되어 컨테이너가 강제로 종료된다. 
 
+### 도커 컴포즈
+- 도커 컴포즈란?
+  - 여러 개의 Docker 컨테이너들을 관리하는 도구이다.
+  - 한 번의 명령어로 여러 개의 컨테이너를 한 번에 실행하거나 종료할 수 있다.
+  - 도커 컴포즈를 통해 관리할 컨테이너를 docker-compose.yml 파일에 정의하여 사용한다.
+
+
 
 <br><hr><br>
 
@@ -342,3 +349,15 @@
   - docker volume create [볼륨명]
 - 볼륨 삭제
   - docker volume rm [볼륨명]
+
+### 도커 컴포즈
+- YAML 파일에 정의된 서비스 생성 및 시작
+  - docerk compose up -d
+- 현재 실행중인 서비스 상태 표시
+  - docerk compose ps
+- 현재 실행중인 서비스의 이미지만 빌드
+  - docerk compose build
+- 실행 중인 서비스의 로그 표시
+  - docerk compose logs
+- YAML 파일에 정의된 서비스 종료 및 제거
+  - docerk compose down
