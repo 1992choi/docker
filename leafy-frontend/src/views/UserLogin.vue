@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <h1>LEAFY v1.1</h1>
+    <h1>LEAFY v1.2</h1>
     <form @submit.prevent="submitLogin">
       <div class="form-group">
         <input type="text" id="userEmail" v-model="userEmail" placeholder="이메일을 입력하세요." required />
