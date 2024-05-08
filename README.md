@@ -212,6 +212,28 @@
   - 한 번의 명령어로 여러 개의 컨테이너를 한 번에 실행하거나 종료할 수 있다.
   - 도커 컴포즈를 통해 관리할 컨테이너를 docker-compose.yml 파일에 정의하여 사용한다.
 
+### GitHub Actions
+- GitHub Actions란?
+  - GitHub 저장소를 기반으로 Workflow를 자동화 할 수 있는 도구이다.
+  - GitHub 제공하는 완전관리형 CI/CD 툴이다.
+- GitHub Actions 특징
+  - 컨테이너(도커) 기반으로 동작한다.
+  - 개발자는 Workflow를 작성하여 다양한 이벤트를 기반으로 실행시킬 수 있다.
+- GitHub Actions 핵심 개념
+  - Workflows
+    - 자동화된 프로세스가 정의되어 있는 하나의 파일이다.
+    - YAML 파일로 작성되어있다.
+    - 트리거를 통해 자동실행이 가능하다.
+    - 워크플로우는 하나 이상의 Job으로 구성되어 있으며, 하나의 Job은 하나 이상의 Step으로 구성되어 있다.
+  - Runners
+    - 워크플로우가 실제로 실행되는 서버이다.
+    - 깃허브의 무료 러너를 사용하거나, 자신의 서버에서 직접 실행이 가능하다.
+  - Trigger
+    - 워크플로우를 자동으로 실행시켜주는 조건을 의미한다.
+    - 특정 조건이 만족했을 때, 트리거를 작동해서 워크플로우를 자동으로 실행한다. Ex) 특정 시간, 소스 코드를 커밋했을 때
+- GitHub Actions 기본문법
+  - ![image](https://github.com/Young-Geun/Docker/assets/27760576/d813a27a-2483-46c0-bc2a-d2193abd8ef0)
+
 
 
 <br><hr><br>
