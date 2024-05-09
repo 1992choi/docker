@@ -233,6 +233,15 @@
     - 특정 조건이 만족했을 때, 트리거를 작동해서 워크플로우를 자동으로 실행한다. Ex) 특정 시간, 소스 코드를 커밋했을 때
 - GitHub Actions 기본문법
   - ![image](https://github.com/Young-Geun/Docker/assets/27760576/d813a27a-2483-46c0-bc2a-d2193abd8ef0)
+- 적용 순서
+  1. {Git Repo}/.github/workflows 경로에 yml 파일 업로드
+  2. Dockerhub > 토큰 발급
+  3. Github > Settings > Developer settings에서 토큰 발급
+  4. Github > {Git Repo} > Settings > Security > Repository secrets에 도커허브 정보 저장
+  5. 변경사항 커밋
+  6. Github > {Git Repo} > Actions에서 성공여부 확인
+  7. Dockerhub > {Repo} > Tags > 태깅정보 확인
+  8. docker-compose.yml에 태깅정보 변경 후 실행
 
 
 
