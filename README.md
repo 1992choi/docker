@@ -54,7 +54,7 @@
 - 컨테이너
   - 이미지를 기반으로 생성되며, 파일 시스템과 어플리케이션이 구체화되어 실행되는 상태이다.
 - 컨테이너의 라이프사이클
-  - ![image](https://github.com/Young-Geun/Docker/assets/27760576/bc38eeee-0b0b-4411-835e-0ed54802e9b6)
+  - ![image](https://github.com/1992choi/docker/assets/27760576/bc38eeee-0b0b-4411-835e-0ed54802e9b6)
 
 ### 이미지 레지스트리
 - 이미지 레지스트리란?
@@ -73,7 +73,7 @@
   - 도커 이미지는 컨테이너를 생성하기 위한 모든 정보를 갖고 있기 때문에 보통 수백MB ~ 수GB가 넘는다. 그런데 기존 이미지에서 작은 변경사항이 생겨 도커 파일에 코드 한줄을 추가해 다시 이미지를 만들고 그 이미지를 다운로드 받는다고 가정하면, 겨우 코드 한줄 추가했는데 이미지의 불변성 때문에 수백MB ~ 수GB가 되는 이미지를 다시 다운로드 받는 매우 비효율적인 상황이 된다. 이러한 문제를 해결하기 위하여 레이어라는 개념이 도입되었다.
 - 레이어란?
   - 기존 이미지에 추가적인 파일이 필요할 때, 다시 다운로드 받는 방법이 아닌 해당 파일을 추가하기 위한 개념이다.
-  - ![image](https://github.com/Young-Geun/Docker/assets/27760576/7f085c8d-cda8-456b-900b-dd17f8f01543)
+  - ![image](https://github.com/1992choi/docker/assets/27760576/7f085c8d-cda8-456b-900b-dd17f8f01543)
     - Docker 이미지는 위 그림처럼 여러 레이어로 구성되며, 각 레이어는 이전 레이어의 변경 사항을 가지고 있다.
     - 만약 ubuntu 이미지가 기존에 존재하는데, nginx 이미지를 다운 받을 경우 nginx 레이어만 다운받게 된다.
   - 장점
@@ -96,7 +96,7 @@
   - 커밋 방식의 문제점 때문에 빌드방식을 더 많이 사용한다.
 
 ### Dockerfile 지시어
-- ![image](https://github.com/Young-Geun/Docker/assets/27760576/d931b008-83ab-4fef-bb76-441ab525f9a7)
+- ![image](https://github.com/1992choi/docker/assets/27760576/d931b008-83ab-4fef-bb76-441ab525f9a7)
 
 ### 멀티 스테이지 빌드
 - Multi-Stage Build(멀티 스테이지 빌드)란?
@@ -176,7 +176,7 @@
 - 레이어 관리
   - RUN 지시어
     - RUN 지시어는 &&을 활용해 최대한 하나로 처리한다.
-    - ![image](https://github.com/Young-Geun/Docker/assets/27760576/2643a5a9-f179-4a72-b412-507684dfcc89)
+    - ![image](https://github.com/1992choi/docker/assets/27760576/2643a5a9-f179-4a72-b412-507684dfcc89)
   - 베이스 이미지
     - 베이스 이미지는 가능한 작은 이미지를 사용한다.
     - Ex) apline OS 사용 권장
@@ -232,7 +232,7 @@
     - 워크플로우를 자동으로 실행시켜주는 조건을 의미한다.
     - 특정 조건이 만족했을 때, 트리거를 작동해서 워크플로우를 자동으로 실행한다. Ex) 특정 시간, 소스 코드를 커밋했을 때
 - GitHub Actions 기본문법
-  - ![image](https://github.com/Young-Geun/Docker/assets/27760576/d813a27a-2483-46c0-bc2a-d2193abd8ef0)
+  - ![image](https://github.com/1992choi/docker/assets/27760576/d813a27a-2483-46c0-bc2a-d2193abd8ef0)
 - 적용 순서
   1. {Git Repo}/.github/workflows 경로에 yml 파일 업로드
   2. Dockerhub > 토큰 발급
