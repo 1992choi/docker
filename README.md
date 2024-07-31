@@ -383,12 +383,12 @@
 
 ### 도커 컴포즈
 - YAML 파일에 정의된 서비스 생성 및 시작
-  - docerk compose up -d
+  - docker compose up -d
 - 현재 실행중인 서비스 상태 표시
-  - docerk compose ps
+  - docker compose ps
 - 현재 실행중인 서비스의 이미지만 빌드
-  - docerk compose build
+  - docker compose build
 - 실행 중인 서비스의 로그 표시
-  - docerk compose logs
+  - docker compose logs
 - YAML 파일에 정의된 서비스 종료 및 제거
-  - docerk compose down
+  - docker compose down
